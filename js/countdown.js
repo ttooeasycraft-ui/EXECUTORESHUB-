@@ -1,46 +1,36 @@
 /* ================================
-   COUNTDOWN.JS — Countdown to July 20, 2026
+   COUNTDOWN.JS — July 20, 2026
    ================================ */
 (function () {
   const TARGET = new Date('2026-07-20T00:00:00');
-
-  const elDays  = document.getElementById('cd-days');
-  const elHours = document.getElementById('cd-hours');
-  const elMins  = document.getElementById('cd-mins');
-  const elSecs  = document.getElementById('cd-secs');
-
-  if (!elDays) return;
+  const els = {
+    days:  document.getElementById('cd-days'),
+    hours: document.getElementById('cd-hours'),
+    mins:  document.getElementById('cd-mins'),
+    secs:  document.getElementById('cd-secs')
+  };
+  if (!els.days) return;
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
-  function flipNum(el, newVal) {
-    if (el.textContent !== newVal) {
-      el.classList.add('flip');
-      setTimeout(() => {
-        el.textContent = newVal;
-        el.classList.remove('flip');
-      }, 60);
+  function flip(el, v) {
+    const s = pad(v);
+    if (el.textContent !== s) {
+      el.classList.add('tick');
+      setTimeout(() => { el.textContent = s; el.classList.remove('tick'); }, 80);
     }
   }
 
   function tick() {
-    const now  = new Date();
-    const diff = TARGET - now;
-
+    const diff = TARGET - Date.now();
     if (diff <= 0) {
-      elDays.textContent = elHours.textContent = elMins.textContent = elSecs.textContent = '00';
+      Object.values(els).forEach(e => e.textContent = '00');
       return;
     }
-
-    const days  = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins  = Math.floor((diff % 3600000) / 60000);
-    const secs  = Math.floor((diff % 60000) / 1000);
-
-    flipNum(elDays,  pad(days));
-    flipNum(elHours, pad(hours));
-    flipNum(elMins,  pad(mins));
-    flipNum(elSecs,  pad(secs));
+    flip(els.days,  Math.floor(diff / 86400000));
+    flip(els.hours, Math.floor((diff % 86400000) / 3600000));
+    flip(els.mins,  Math.floor((diff % 3600000) / 60000));
+    flip(els.secs,  Math.floor((diff % 60000) / 1000));
   }
 
   tick();

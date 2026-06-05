@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EXECUTORES HUB</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body data-accent="blue">
+
+  <!-- Settings Panel -->
+  <div class="settings-btn" id="settingsBtn" title="Alterar cor de destaque">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  </div>
+
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-header">
+      <span>Cor de Destaque</span>
+      <button class="close-settings" id="closeSettings">✕</button>
+    </div>
+    <div class="color-options">
+      <button class="color-opt yellow" data-accent="yellow" title="Amarelo">
+        <span class="color-dot"></span>Amarelo
+      </button>
+      <button class="color-opt blue active" data-accent="blue" title="Azul">
+        <span class="color-dot"></span>Azul
+      </button>
+      <button class="color-opt red" data-accent="red" title="Vermelho">
+        <span class="color-dot"></span>Vermelho
+      </button>
+      <button class="color-opt purple" data-accent="purple" title="Roxo">
+        <span class="color-dot"></span>Roxo
+      </button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">
+          <h1 class="site-title">EXECUTORES HUB</h1>
+          <p class="site-tagline">Executores &amp; Scripts para Roblox</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- SECTION 1: EXECUTORS -->
+    <section class="section" id="executors">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-icon">🚀</span> Executores Atualizados
+        </h2>
+        <p class="section-desc">Os melhores executores, sempre atualizados para a versão mais recente do Roblox.</p>
+      </div>
+
+      <div class="executor-tabs">
+        <button class="tab-btn active" data-tab="mobile">📱 Mobile</button>
+        <button class="tab-btn" data-tab="pc">💻 PC</button>
+      </div>
+
+      <!-- Mobile Executors -->
+      <div class="tab-content active" id="tab-mobile">
+        <div class="executors-grid">
+          <a href="https://deltaexecutor.app/" target="_blank" rel="noopener" class="executor-card">
+            <div class="executor-icon">Δ</div>
+            <div class="executor-info">
+              <h3>Delta Executor</h3>
+              <p>iOS &amp; Android • Grátis</p>
+            </div>
+            <span class="badge-updated">🟢 ATUALIZADO</span>
+          </a>
+          <a href="https://www.arceusxpro.com/" target="_blank" rel="noopener" class="executor-card">
+            <div class="executor-icon">⚔</div>
+            <div class="executor-info">
+              <h3>Arceus X</h3>
+              <p>Android • Grátis</p>
+            </div>
+            <span class="badge-updated">🟢 ATUALIZADO</span>
+          </a>
+          <a href="https://codex.app/" target="_blank" rel="noopener" class="executor-card">
+            <div class="executor-icon">{ }</div>
+            <div class="executor-info">
+              <h3>Codex</h3>
+              <p>iOS &amp; Android • Grátis</p>
+            </div>
+            <span class="badge-updated">🟢 ATUALIZADO</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PC Executors -->
+      <div class="tab-content" id="tab-pc">
+        <div class="executors-grid">
+          <a href="https://krnl.place/" target="_blank" rel="noopener" class="executor-card">
+            <div class="executor-icon">K</div>
+            <div class="executor-info">
+              <h3>KRNL</h3>
+              <p>Windows • Grátis</p>
+            </div>
+            <span class="badge-updated">🟢 ATUALIZADO</span>
+          </a>
+          <a href="https://fluxteam.net/" target="_blank" rel="noopener" class="executor-card">
+            <div class="executor-icon">F</div>
+            <div class="executor-info">
+              <h3>Fluxus</h3>
+              <p>Windows • Grátis</p>
+            </div>
+            <span class="badge-updated">🟢 ATUALIZADO</span>
+          </a>
+          <a href="https://getsynapse.com/" target="_blank" rel="noopener" class="executor-card">
+            <div class="executor-icon">S</div>
+            <div class="executor-info">
+              <h3>Synapse X</h3>
+              <p>Windows • Pago</p>
+            </div>
+            <span class="badge-updated">🟢 ATUALIZADO</span>
+          </a>
+          <a href="https://electron.gg/" target="_blank" rel="noopener" class="executor-card">
+            <div class="executor-icon">⚡</div>
+            <div class="executor-info">
+              <h3>Electron</h3>
+              <p>Windows • Grátis</p>
+            </div>
+            <span class="badge-updated">🟢 ATUALIZADO</span>
+          </a>
+          <a href="https://jjsploit.net/" target="_blank" rel="noopener" class="executor-card">
+            <div class="executor-icon">J</div>
+            <div class="executor-info">
+              <h3>JJSploit</h3>
+              <p>Windows • Grátis</p>
+            </div>
+            <span class="badge-updated">🟢 ATUALIZADO</span>
+          </a>
+          <a href="https://scriptware.net/" target="_blank" rel="noopener" class="executor-card">
+            <div class="executor-icon">SW</div>
+            <div class="executor-info">
+              <h3>Script-Ware</h3>
+              <p>Windows/Mac • Pago</p>
+            </div>
+            <span class="badge-updated">🟢 ATUALIZADO</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SCRIPT BANK -->
+    <section class="section" id="scripts">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-icon">📜</span> Banco de Scripts
+        </h2>
+        <p class="section-desc">Clique no jogo para ver e copiar o script. Cole direto no seu executor.</p>
+      </div>
+
+      <div class="scripts-grid" id="scriptsGrid">
+        <!-- Gerado pelo script.js -->
+      </div>
+    </section>
+
+    <!-- Script Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 id="modalTitle">Script do Jogo</h3>
+          <button class="modal-close" id="modalClose">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="script-box" id="scriptBox"></div>
+          <button class="copy-btn" id="copyBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            Copiar Código
+          </button>
+          <p class="copy-hint">Cole o código no campo de execução do seu executor e pressione <strong>Execute</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>⚠️ Este site é apenas para fins educacionais. Use com responsabilidade.</p>
+    <p class="footer-brand">EXECUTORES HUB © 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

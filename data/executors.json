@@ -1,0 +1,11 @@
+[
+  {"id":1,"name":"Delta Executor","platform":"mobile","info":"iOS & Android • Grátis • Lv.7","tags":["iOS","Android","Free"],"link":"https://deltaexecutor.net/","paid":false,"active":true},
+  {"id":2,"name":"Arceus X","platform":"mobile","info":"Android • Grátis • Lv.7","tags":["Android","Free"],"link":"https://www.arceusxpro.com/","paid":false,"active":true},
+  {"id":3,"name":"Codex","platform":"mobile","info":"iOS & Android • Grátis • Lv.8","tags":["iOS","Android","Free"],"link":"https://codex.lol/","paid":false,"active":true},
+  {"id":4,"name":"KRNL","platform":"pc","info":"Windows • Grátis • Lv.7","tags":["Windows","Free"],"link":"https://krnl.place/","paid":false,"active":true},
+  {"id":5,"name":"Fluxus","platform":"pc","info":"Windows • Grátis • Lv.6","tags":["Windows","Free"],"link":"https://fluxteam.net/","paid":false,"active":true},
+  {"id":6,"name":"Electron","platform":"pc","info":"Windows • Grátis • Lv.7","tags":["Windows","Free"],"link":"https://electron.gg/","paid":false,"active":true},
+  {"id":7,"name":"JJSploit","platform":"pc","info":"Windows • Grátis • Lv.5","tags":["Windows","Free","Iniciante"],"link":"https://jjsploit.net/","paid":false,"active":true},
+  {"id":8,"name":"Synapse X","platform":"pc","info":"Windows • Pago • Lv.8","tags":["Windows","Pago"],"link":"https://x.synapse.to/","paid":true,"active":true},
+  {"id":9,"name":"Script-Ware","platform":"pc","info":"Win/Mac • Pago • Lv.8","tags":["Win","Mac","Pago"],"link":"https://scriptware.net/","paid":true,"active":true}
+]

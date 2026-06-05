@@ -1,93 +1,62 @@
 /* ================================
-   MUSIC.JS — Background music player
+   MUSIC.JS — Billie Jean player
+   Works on both pages
    ================================ */
 (function () {
   const audio = document.getElementById('bgMusic');
   if (!audio) return;
 
-  const isHub = !!document.getElementById('musicPlayer');
+  /* ---- Hub page floating player ---- */
+  const bar       = document.getElementById('musicBar');
+  const playBtn   = document.getElementById('musicPlay');
+  const disc      = document.getElementById('musicDisc');
+  const toggleBtn = document.getElementById('musicToggleBtn');
 
-  /* ---- Coming Soon page controls ---- */
-  const csToggle = document.getElementById('musicToggle');
-  if (csToggle) {
-    let playing = false;
-    csToggle.addEventListener('click', () => {
-      if (!playing) {
-        audio.volume = 0.35;
-        audio.play().then(() => {
-          playing = true;
-          csToggle.textContent = '🔊 DESATIVAR SOM';
-          csToggle.classList.add('active');
-          fadeIn(audio, 0.35);
-        }).catch(() => {});
-      } else {
-        fadeOut(audio, () => {
-          audio.pause();
-          playing = false;
-          csToggle.textContent = '🔇 ATIVAR SOM';
-          csToggle.classList.remove('active');
-        });
-      }
+  let playing = false;
+
+  function setPlay(state) {
+    playing = state;
+    if (playBtn) playBtn.textContent = state ? '⏸' : '▶';
+    if (disc)    disc.classList.toggle('spin', state);
+    if (bar)     bar.classList.toggle('show', true);
+    if (toggleBtn) toggleBtn.textContent = state ? '⏸ PAUSAR' : '▶ ATIVAR';
+  }
+
+  function startAudio() {
+    audio.volume = 0;
+    audio.play().then(() => {
+      setPlay(true);
+      fade(audio, 0, .32, 80);
+    }).catch(() => {});
+  }
+
+  function stopAudio() {
+    fade(audio, audio.volume, 0, 80, () => {
+      audio.pause();
+      setPlay(false);
     });
   }
 
-  /* ---- Hub page controls ---- */
-  if (isHub) {
-    const player   = document.getElementById('musicPlayer');
-    const playBtn  = document.getElementById('musicPlayBtn');
-    const disc     = document.getElementById('musicDisc');
-    const ctrlBtn  = document.getElementById('musicCtrl');
-    let playing = false;
-
-    function setPlaying(state) {
-      playing = state;
-      if (state) {
-        playBtn.textContent = '⏸';
-        disc.classList.add('spinning');
-        player.classList.add('visible');
-        if (ctrlBtn) ctrlBtn.textContent = '⏸ Pausar Música';
-      } else {
-        playBtn.textContent = '▶';
-        disc.classList.remove('spinning');
-        if (ctrlBtn) ctrlBtn.textContent = '▶ Ativar Música';
-      }
-    }
-
-    function toggle() {
-      if (!playing) {
-        audio.volume = 0;
-        audio.play().then(() => {
-          setPlaying(true);
-          player.classList.add('visible');
-          fadeIn(audio, 0.35);
-        }).catch(() => {});
-      } else {
-        fadeOut(audio, () => {
-          audio.pause();
-          setPlaying(false);
-        });
-      }
-    }
-
-    if (playBtn) playBtn.addEventListener('click', toggle);
-    if (ctrlBtn) ctrlBtn.addEventListener('click', toggle);
-
-    // Show player bar after 1s
-    setTimeout(() => { player.classList.add('visible'); }, 1000);
+  function toggle() {
+    if (!playing) startAudio(); else stopAudio();
   }
 
-  /* ---- Helpers ---- */
-  function fadeIn(el, target, step = 0.02) {
-    el.volume = 0;
+  if (playBtn)   playBtn.addEventListener('click', toggle);
+  if (toggleBtn) toggleBtn.addEventListener('click', toggle);
+
+  // Show player after delay
+  if (bar) setTimeout(() => bar.classList.add('show'), 1200);
+
+  /* ---- Fade utility ---- */
+  function fade(el, from, to, step, cb) {
+    const dir = to > from ? 1 : -1;
     const iv = setInterval(() => {
-      if (el.volume + step >= target) { el.volume = target; clearInterval(iv); }
-      else el.volume += step;
-    }, 80);
-  }
-  function fadeOut(el, cb, step = 0.02) {
-    const iv = setInterval(() => {
-      if (el.volume - step <= 0) { el.volume = 0; clearInterval(iv); cb && cb(); }
-      else el.volume -= step;
-    }, 80);
+      el.volume = Math.max(0, Math.min(1, el.volume + dir * .025));
+      if ((dir > 0 && el.volume >= to) || (dir < 0 && el.volume <= to)) {
+        el.volume = to;
+        clearInterval(iv);
+        if (cb) cb();
+      }
+    }, step);
   }
 })();

@@ -1,0 +1,173 @@
+/* ================================
+   THEME.CSS — Global variables, reset, shared
+   ================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ---- Accent presets ---- */
+:root,
+[data-accent="green"] {
+  --p: #00e676;
+  --pg: rgba(0,230,118,.55);
+  --pd: rgba(0,230,118,.1);
+  --pm: rgba(0,230,118,.22);
+  --bg0: #040a06;
+  --bg1: #080f09;
+  --bg2: #0d1610;
+  --bg3: #121e15;
+  --sf1: #152019;
+  --sf2: #1c2b20;
+  --bd: rgba(0,230,118,.15);
+  --bd2: rgba(0,230,118,.28);
+  --tx: #e4f0e8;
+  --tx2: #7a9e84;
+  --tx3: #3a5a40;
+  --font-px: 'Press Start 2P', monospace;
+  --font-sg: 'Space Grotesk', sans-serif;
+  --r: 10px;
+  --r2: 6px;
+  --sp: .22s;
+}
+
+[data-accent="blue"] {
+  --p: #00b4ff; --pg: rgba(0,180,255,.55); --pd: rgba(0,180,255,.1); --pm: rgba(0,180,255,.22);
+  --bg0:#040811; --bg1:#070d18; --bg2:#0d1420; --bg3:#111a28;
+  --sf1:#132033; --sf2:#1a2a44; --bd:rgba(0,180,255,.15); --bd2:rgba(0,180,255,.28);
+  --tx:#e4eef8; --tx2:#6a90b8; --tx3:#2a4060;
+}
+[data-accent="yellow"] {
+  --p: #ffe600; --pg: rgba(255,230,0,.55); --pd: rgba(255,230,0,.1); --pm: rgba(255,230,0,.22);
+  --bg0:#0b0a02; --bg1:#110f03; --bg2:#1a1704; --bg3:#222006;
+  --sf1:#2a2808; --sf2:#35320c; --bd:rgba(255,230,0,.15); --bd2:rgba(255,230,0,.28);
+  --tx:#f8f4e4; --tx2:#a09060; --tx3:#604820;
+}
+[data-accent="red"] {
+  --p: #ff2d55; --pg: rgba(255,45,85,.55); --pd: rgba(255,45,85,.1); --pm: rgba(255,45,85,.22);
+  --bg0:#0b0204; --bg1:#120307; --bg2:#1c040b; --bg3:#25060e;
+  --sf1:#300812; --sf2:#400b18; --bd:rgba(255,45,85,.15); --bd2:rgba(255,45,85,.28);
+  --tx:#f8e4e8; --tx2:#a06070; --tx3:#602030;
+}
+[data-accent="purple"] {
+  --p: #bf5fff; --pg: rgba(191,95,255,.55); --pd: rgba(191,95,255,.1); --pm: rgba(191,95,255,.22);
+  --bg0:#080411; --bg1:#0d0818; --bg2:#140e22; --bg3:#1a132c;
+  --sf1:#221838; --sf2:#2c2050; --bd:rgba(191,95,255,.15); --bd2:rgba(191,95,255,.28);
+  --tx:#f0e4f8; --tx2:#9070b8; --tx3:#502070;
+}
+[data-accent="orange"] {
+  --p: #ff7c00; --pg: rgba(255,124,0,.55); --pd: rgba(255,124,0,.1); --pm: rgba(255,124,0,.22);
+  --bg0:#0b0500; --bg1:#120800; --bg2:#1c0d00; --bg3:#251200;
+  --sf1:#301500; --sf2:#402000; --bd:rgba(255,124,0,.15); --bd2:rgba(255,124,0,.28);
+  --tx:#f8f0e4; --tx2:#a07050; --tx3:#603020;
+}
+
+/* ---- Reset ---- */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font-sg); background:var(--bg0); color:var(--tx); min-height:100vh; overflow-x:hidden; }
+a { color:inherit; text-decoration:none; }
+button { cursor:pointer; font-family:inherit; border:none; background:none; }
+img { max-width:100%; display:block; }
+
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--bg1); }
+::-webkit-scrollbar-thumb { background:var(--p); border-radius:2px; }
+::selection { background:var(--pm); }
+
+/* ---- Gear Button ---- */
+.gear-btn {
+  position:fixed; top:20px; right:20px; z-index:900;
+  width:46px; height:46px;
+  background:var(--sf1); border:1.5px solid var(--p);
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  color:var(--p); box-shadow:0 0 16px var(--pg);
+  transition:transform var(--sp), box-shadow var(--sp);
+}
+.gear-btn:hover { transform:rotate(50deg); box-shadow:0 0 28px var(--pg); }
+
+/* ---- Settings Panel ---- */
+.gear-panel {
+  position:fixed; top:76px; right:20px; z-index:899;
+  background:var(--sf1); border:1.5px solid var(--p);
+  border-radius:var(--r); padding:18px; width:200px;
+  box-shadow:0 0 40px var(--pg), 0 10px 40px rgba(0,0,0,.7);
+  display:none; flex-direction:column; gap:12px;
+}
+.gear-panel.open { display:flex; animation:popIn .16s ease; }
+@keyframes popIn {
+  from { opacity:0; transform:translateY(-8px) scale(.97); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+.gear-label {
+  font-family:var(--font-px); font-size:.55rem; color:var(--p);
+  letter-spacing:.1em; padding-bottom:6px; border-bottom:1px solid var(--bd);
+}
+.gear-sep { border-top:1px solid var(--bd); }
+
+.accent-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+.acc-btn {
+  display:flex; align-items:center; gap:7px;
+  background:var(--bg2); border:1.5px solid var(--bd);
+  border-radius:var(--r2); padding:8px 10px;
+  font-family:var(--font-sg); font-weight:600; font-size:.82rem; color:var(--tx2);
+  transition:all var(--sp);
+}
+.acc-btn:hover,.acc-btn.active { border-color:var(--p); background:var(--pd); color:var(--p); }
+.acc-btn span { width:11px; height:11px; border-radius:50%; flex-shrink:0; }
+.acc-btn.green span  { background:#00e676; box-shadow:0 0 8px rgba(0,230,118,.8); }
+.acc-btn.blue span   { background:#00b4ff; box-shadow:0 0 8px rgba(0,180,255,.8); }
+.acc-btn.yellow span { background:#ffe600; box-shadow:0 0 8px rgba(255,230,0,.8); }
+.acc-btn.red span    { background:#ff2d55; box-shadow:0 0 8px rgba(255,45,85,.8); }
+.acc-btn.purple span { background:#bf5fff; box-shadow:0 0 8px rgba(191,95,255,.8); }
+.acc-btn.orange span { background:#ff7c00; box-shadow:0 0 8px rgba(255,124,0,.8); }
+
+.music-toggle-btn {
+  width:100%; padding:10px;
+  background:var(--pd); border:1.5px solid var(--p);
+  border-radius:var(--r2); font-family:var(--font-px); font-size:.55rem;
+  color:var(--p); letter-spacing:.06em;
+  transition:all var(--sp);
+}
+.music-toggle-btn:hover { background:var(--pm); box-shadow:0 0 14px var(--pg); }
+
+/* ---- Music Player Bar ---- */
+.music-bar {
+  position:fixed; bottom:24px; left:50%;
+  transform:translateX(-50%) translateY(90px);
+  z-index:800;
+  background:var(--sf1); border:1.5px solid var(--p);
+  border-radius:40px; padding:10px 20px;
+  display:flex; align-items:center; gap:14px;
+  box-shadow:0 0 30px var(--pg), 0 8px 28px rgba(0,0,0,.6);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1), opacity .3s;
+  opacity:0;
+}
+.music-bar.show { transform:translateX(-50%) translateY(0); opacity:1; }
+
+.music-disc {
+  width:36px; height:36px;
+  background:var(--pd); border:1.5px solid var(--p);
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:1rem; color:var(--p);
+}
+.music-disc.spin { animation:discSpin 2.5s linear infinite; }
+@keyframes discSpin { to { transform:rotate(360deg); } }
+
+.music-info { display:flex; flex-direction:column; gap:2px; }
+.music-song { font-family:var(--font-px); font-size:.55rem; color:var(--p); }
+.music-artist { font-size:.75rem; color:var(--tx2); }
+
+.music-play {
+  width:32px; height:32px;
+  background:var(--p); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.8rem; font-weight:700; color:#000;
+  transition:box-shadow var(--sp), transform var(--sp);
+}
+.music-play:hover { box-shadow:0 0 16px var(--pg); transform:scale(1.1); }
+
+@media(max-width:600px) {
+  .gear-btn { top:14px; right:14px; width:40px; height:40px; }
+  .gear-panel { right:14px; top:64px; width:185px; }
+  .music-bar { max-width:calc(100vw - 32px); }
+}

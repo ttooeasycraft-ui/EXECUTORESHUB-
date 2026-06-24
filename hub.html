@@ -213,10 +213,18 @@ h1,h2,h3{font-weight:700}
 .ec::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--pm) 0%,transparent 55%);opacity:0;transition:opacity var(--sp);pointer-events:none}
 .ec:hover{border-color:var(--bd2);transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.55),0 0 20px var(--pd)}
 .ec:hover::after{opacity:1}
-.ec-img{width:100%;height:110px;object-fit:contain;border-radius:var(--r2);background:var(--bg0);border:1px solid var(--bd);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--tx3)}
-.ec-img img{width:100%;height:100%;object-fit:contain}
-.ec-row{display:flex;align-items:flex-start;justify-content:space-between;gap:7px}
-.ec-name{font-family:'Press Start 2P',monospace;font-size:.6rem;color:var(--tx);line-height:1.5;transition:color var(--sp)}
+.ec-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+/* Image NEXT TO name — small icon to the left */
+.ec-icon{
+  width:42px;height:42px;flex-shrink:0;
+  border-radius:9px;background:var(--bg0);border:1.5px solid var(--bd2);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;color:var(--tx3);transition:border-color var(--sp);
+}
+.ec-icon img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+.ec:hover .ec-icon{border-color:var(--p)}
+.ec-name-wrap{flex:1;min-width:0}
+.ec-name{font-family:'Press Start 2P',monospace;font-size:.56rem;color:var(--tx);line-height:1.55;transition:color var(--sp);word-break:break-word}
 .ec:hover .ec-name{color:var(--p)}
 .live{font-family:'Press Start 2P',monospace;font-size:.36rem;background:#15803d;color:#fff;padding:3px 6px;border-radius:3px;white-space:nowrap;flex-shrink:0;box-shadow:0 0 8px rgba(34,197,94,.55);animation:lp 2s ease-in-out infinite}
 @keyframes lp{0%,100%{box-shadow:0 0 8px rgba(34,197,94,.6)}50%{box-shadow:0 0 2px rgba(34,197,94,.2);opacity:.7}}
@@ -976,6 +984,15 @@ async function initData(){
   updateStats();
   renderFavChips();
   updateFavCount();
+  // Fix: after data loads, rebuild any executor grids already visible
+  ['mob','pc'].forEach(plat=>{
+    const gid=plat==='mob'?'mobGrid':'pcGrid';
+    const g=document.getElementById(gid);
+    if(g){g.innerHTML='';g.removeAttribute('data-built');}
+  });
+  // If user is already on an exec page, build it now
+  if(document.getElementById('page-mob').classList.contains('on')) buildExecs('mob');
+  if(document.getElementById('page-pc').classList.contains('on'))  buildExecs('pc');
 }
 initData();
 
@@ -991,18 +1008,27 @@ function buildExecs(plat){
   const id=plat==='mob'?'mobGrid':'pcGrid';
   const grid=document.getElementById(id);
   if(!grid||grid.dataset.built)return;
+  // Don't mark built until we actually have data
+  if(!executorData.length){
+    grid.innerHTML='<div style="padding:24px;text-align:center;color:var(--tx2)">⏳ Carregando...</div>';
+    return;
+  }
   grid.dataset.built='1';
   const list=executorData.filter(e=>e.platform===plat&&e.active!==false);
-  if(!list.length){grid.innerHTML='<div class="no-exec">Nenhum executor para esta plataforma.</div>';return;}
+  if(!list.length){grid.innerHTML='<div class="no-exec">Nenhum executor para esta plataforma ainda.</div>';return;}
   list.forEach(e=>{
     const tags=e.tags.map(t=>`<span${(e.paid&&t.match(/pago/i))?' class="tpaid"':''}>${t}</span>`).join('');
-    const imgHtml=e.img
-      ?`<div class="ec-img"><img src="${e.img}" alt="${e.name}" loading="lazy" onerror="this.parentElement.innerHTML='📦'"/></div>`
-      :`<div class="ec-img">📦</div>`;
+    const iconHtml=e.img
+      ?`<div class="ec-icon"><img src="${e.img}" alt="${e.name}" loading="lazy" onerror="this.parentElement.textContent='📦'"/></div>`
+      :`<div class="ec-icon">${plat==='mob'?'📱':'💻'}</div>`;
     const card=document.createElement('div');
     card.className='ec';
-    card.innerHTML=`${imgHtml}
-      <div class="ec-row"><div class="ec-name">${e.name}</div><span class="live">● ONLINE</span></div>
+    card.innerHTML=`
+      <div class="ec-row">
+        ${iconHtml}
+        <div class="ec-name-wrap"><div class="ec-name">${e.name}</div></div>
+        <span class="live">●&nbsp;ONLINE</span>
+      </div>
       <div class="ec-info">${e.info}</div>
       <div class="ec-tags">${tags}</div>
       <a href="${e.link}" target="_blank" rel="noopener" class="ec-dl">⬇ DOWNLOAD</a>`;
@@ -1485,15 +1511,20 @@ document.getElementById('saAdd').addEventListener('click',async()=>{
 /* manage custom scripts */
 function renderCSList(){
   const body=document.getElementById('csListBody');if(!body)return;
-  if(!customScripts.length){body.innerHTML='<div style="color:var(--tx2);font-size:.82rem">Nenhum script custom.</div>';return;}
+  if(!customScripts.length){body.innerHTML='<div style="color:var(--tx2);font-size:.82rem">Nenhum script custom adicionado ainda.</div>';return;}
   body.innerHTML='';
   customScripts.forEach((s,i)=>{
     const row=document.createElement('div');
-    row.style.cssText='display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r2);';
-    row.innerHTML=`<span style="font-size:1rem">${s.icon}</span><span style="flex:1;font-size:.84rem;font-weight:600">${s.name}</span><span style="font-size:.7rem;color:var(--tx2)">${s.tag}</span><span class="sbadge ${s.price}">${s.price==='free'?'GRÁTIS':'PAGO'}</span><button class="exec-ed-del" data-i="${i}" title="Remover">🗑</button>`;
+    row.style.cssText='display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r2);margin-bottom:5px;';
+    row.innerHTML=`
+      <span style="font-size:1.1rem;flex-shrink:0">${s.icon}</span>
+      <span style="flex:1;font-size:.84rem;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.name}</span>
+      <span style="font-size:.72rem;color:var(--tx2);flex-shrink:0">${s.tag}</span>
+      <span class="sbadge ${s.price}" style="flex-shrink:0">${s.price==='free'?'GRÁTIS':'PAGO'}</span>
+      <button data-i="${i}" title="Apagar script" style="flex-shrink:0;background:rgba(244,63,94,.15);color:#f43f5e;border:1.5px solid rgba(244,63,94,.4);border-radius:5px;padding:4px 10px;font-family:'Press Start 2P',monospace;font-size:.38rem;cursor:pointer;transition:all .16s" onmouseover="this.style.background='rgba(244,63,94,.3)'" onmouseout="this.style.background='rgba(244,63,94,.15)'">🗑 APAGAR</button>`;
     body.appendChild(row);
   });
-  body.querySelectorAll('.exec-ed-del').forEach(b=>b.addEventListener('click',()=>removeCS(parseInt(b.dataset.i))));
+  body.querySelectorAll('[data-i]').forEach(b=>b.addEventListener('click',()=>removeCS(parseInt(b.dataset.i))));
 }
 async function removeCS(i){
   const name=customScripts[i].name;

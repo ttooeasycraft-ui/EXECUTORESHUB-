@@ -407,6 +407,21 @@ input,textarea,select{font-family:'Space Grotesk',sans-serif;color:var(--tx)}
 .discord-link{display:flex;align-items:center;gap:8px;padding:8px 13px;margin:0 9px 6px;background:rgba(88,101,242,.12);border:1px solid rgba(88,101,242,.3);border-radius:var(--r2);font-size:.78rem;color:#8891f8;transition:all var(--sp);text-decoration:none;cursor:pointer;flex-shrink:0}
 .discord-link:hover{background:rgba(88,101,242,.2);border-color:rgba(88,101,242,.5)}
 
+/* ══ SCRIPTBLOX ══ */
+.sbx-cat{font-family:'Press Start 2P',monospace;font-size:.38rem;padding:5px 9px;border-radius:20px;border:1.5px solid var(--bd);background:var(--sf1);color:var(--tx2);cursor:pointer;transition:all var(--sp)}
+.sbx-cat:hover,.sbx-cat.on{border-color:var(--p);color:var(--p);background:var(--pd)}
+.sbx-card{background:linear-gradient(145deg,var(--sf1),var(--bg2));border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:all var(--sp);position:relative}
+.sbx-card:hover{border-color:var(--bd2);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.4),0 0 12px var(--pd)}
+.sbx-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg0);display:block}
+.sbx-thumb-ph{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--bg0),var(--sf2));display:flex;align-items:center;justify-content:center;font-size:2rem}
+.sbx-body{padding:9px 10px;display:flex;flex-direction:column;gap:4px}
+.sbx-game{font-family:'Press Start 2P',monospace;font-size:.38rem;color:var(--p);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbx-title{font-size:.76rem;font-weight:700;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbx-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.sbx-views{font-size:.66rem;color:var(--tx2)}
+.sbx-badge-free{font-family:'Press Start 2P',monospace;font-size:.3rem;padding:2px 5px;border-radius:3px;background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
+.sbx-badge-paid{font-family:'Press Start 2P',monospace;font-size:.3rem;padding:2px 5px;border-radius:3px;background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.sbx-verified{font-size:.7rem}
 /* ══ RESPONSIVE ══ */
 @media(max-width:768px){
   .sb{transform:translateX(-100%)}.sb.open{transform:translateX(0)}
@@ -476,6 +491,7 @@ input,textarea,select{font-family:'Space Grotesk',sans-serif;color:var(--tx)}
 
     <span class="sb-sec">EXTRAS</span>
     <div class="sb-item" data-p="music"><span class="ico">🎵</span>Músicas</div>
+    <div class="sb-item" data-p="scriptblox"><span class="ico">🌐</span>ScriptBlox<span class="sb-new">AO VIVO</span></div>
     <div class="sb-item priv" data-p="admin" style="display:none"><span class="ico">⚙️</span>Admin</div>
   </nav>
 
@@ -621,6 +637,38 @@ input,textarea,select{font-family:'Space Grotesk',sans-serif;color:var(--tx)}
   <div class="page" id="page-paid">
     <div class="topbar"><span class="tb-icon">💎</span><span class="tb-title">SCRIPTS PAGOS</span><span class="tb-pill">premium</span></div>
     <div class="scripts-wrap"><div class="sg" id="pGrid"></div></div>
+  </div>
+
+  <!-- SCRIPTBLOX -->
+  <div class="page" id="page-scriptblox">
+    <div class="topbar"><span class="tb-icon">🌐</span><span class="tb-title">SCRIPTBLOX</span><span class="tb-pill">AO VIVO</span>
+      <div class="tb-actions">
+        <input class="f-inp" id="sbxSearch" type="text" placeholder="Buscar..." style="max-width:180px;padding:6px 10px;font-size:.8rem"/>
+        <button class="btn ghost sm" id="sbxSearchBtn">🔍</button>
+        <button class="btn ghost sm" id="sbxRand">🎲 Random</button>
+      </div>
+    </div>
+    <div style="padding:22px;flex:1;display:flex;flex-direction:column;gap:14px">
+      <div style="padding:10px 14px;background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.2);border-radius:var(--r2);font-size:.78rem;color:var(--tx2);line-height:1.7">
+        ⚠️ Scripts do ScriptBlox são postados por terceiros e não foram verificados pelo EXECUTORES HUB. Use com responsabilidade.
+      </div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;align-items:center">
+        <span style="font-family:'Press Start 2P',monospace;font-size:.42rem;color:var(--tx2)">FILTRAR:</span>
+        <button class="sbx-cat on" data-q="">🌐 Todos</button>
+        <button class="sbx-cat" data-q="blox fruit">🍎 Blox Fruit</button>
+        <button class="sbx-cat" data-q="brookhaven">🏘️ Brookhaven</button>
+        <button class="sbx-cat" data-q="da hood">🏙️ Da Hood</button>
+        <button class="sbx-cat" data-q="murder mystery">🔪 MM2</button>
+        <button class="sbx-cat" data-q="arsenal">🔫 Arsenal</button>
+        <button class="sbx-cat" data-q="pet sim">🐾 Pet Sim</button>
+      </div>
+      <div class="sg" id="sbxGrid" style="grid-template-columns:repeat(auto-fill,minmax(155px,1fr))"></div>
+      <div id="sbxLoad" style="text-align:center;padding:30px;color:var(--tx2)"></div>
+      <div style="display:flex;justify-content:center;gap:9px">
+        <button class="btn ghost" id="sbxPrev" style="display:none">← Anterior</button>
+        <button class="btn ghost" id="sbxNext" style="display:none">Próxima →</button>
+      </div>
+    </div>
   </div>
 
   <!-- MUSIC -->
@@ -801,7 +849,9 @@ input,textarea,select{font-family:'Space Grotesk',sans-serif;color:var(--tx)}
           </div>
           <div class="upload-progress" id="eUpProg"><div class="upload-progress-bar"></div></div>
           <div class="f-row">
-            <input class="f-inp grow" id="eAddImg" type="url" placeholder="URL da imagem (opcional)"/>
+            <input class="f-inp grow" id="eAddImg" type="url" placeholder="URL da imagem (opcional) — ou clique 📸"/>
+            <button class="upload-btn" id="eImgBtn" title="Subir imagem do executor">📸 Subir imagem</button>
+            <input type="file" id="eImgInp" accept="image/*" style="display:none"/>
             <select class="f-sel" id="eAddPaid">
               <option value="false">Grátis</option>
               <option value="true">Pago</option>
@@ -1002,6 +1052,7 @@ function goTo(id){
   if(id==='home'){renderFavChips();renderFeatured();}
   if(id==='admin') buildAdmin();
   if(id==='music') buildPlaylistUI();
+  if(id==='scriptblox'&&!sbxLoaded) fetchSBX('',1);
   setTimeout(()=>showProgress(100),400);
 }
 document.querySelectorAll('[data-p]').forEach(el=>{
@@ -1608,6 +1659,25 @@ async function removeWLUser(i){
   else showMsg('wlMsg','Erro: '+r.err,'err');
 }
 
+/* ══ IMAGE UPLOAD FOR EXECUTOR ══ */
+document.getElementById('eImgBtn').addEventListener('click',()=>document.getElementById('eImgInp').click());
+document.getElementById('eImgInp').addEventListener('change',async e=>{
+  const file=e.target.files[0];if(!file)return;
+  if(!getGhTok()){toast('⚠️ Configure o token GitHub primeiro!','warn',4000);return;}
+  showMsg('eAddMsg','⏳ Enviando imagem...','ok');
+  document.getElementById('eUpProg').style.display='block';
+  const b64=await readFileB64(file);
+  const path=`uploads/images/${Date.now()}_${file.name.replace(/\s+/g,'_')}`;
+  const r=await ghUploadFile(path,b64,'Upload executor image: '+file.name);
+  document.getElementById('eUpProg').style.display='none';
+  e.target.value='';
+  if(r.ok){
+    document.getElementById('eAddImg').value=r.url;
+    showMsg('eAddMsg','✅ Imagem enviada! URL preenchida.','ok');
+    toast('📸 Imagem enviada com sucesso!','ok',3000);
+  } else showMsg('eAddMsg','Erro: '+r.err,'err');
+});
+
 /* add executor with file upload */
 document.getElementById('eFileBtn').addEventListener('click',()=>document.getElementById('eFileInp').click());
 document.getElementById('eFileInp').addEventListener('change',async e=>{
@@ -1782,6 +1852,89 @@ const editModalBg=document.getElementById('editModalBg');
 document.getElementById('editClose').addEventListener('click',closeEditModal);
 editModalBg.addEventListener('click',e=>{if(e.target===editModalBg)closeEditModal();});
 function closeEditModal(){editModalBg.classList.remove('on');document.body.style.overflow='';}
+
+/* ══ SCRIPTBLOX INTEGRATION ══ */
+let sbxPage=1, sbxQuery='', sbxLoaded=false;
+
+async function fetchSBX(q,page){
+  const lbl=document.getElementById('sbxLoad');
+  const grid=document.getElementById('sbxGrid');
+  lbl.innerHTML='<span class="spin-ico" style="display:inline-block;animation:dspin 1.2s linear infinite">🌐</span> Carregando do ScriptBlox...';
+  grid.innerHTML='';
+  document.getElementById('sbxPrev').style.display='none';
+  document.getElementById('sbxNext').style.display='none';
+  try{
+    const url=q
+      ?`https://scriptblox.com/api/script/search?q=${encodeURIComponent(q)}&page=${page}&max=24`
+      :`https://scriptblox.com/api/script/fetch?page=${page}&max=24`;
+    const r=await fetch(url,{headers:{'User-Agent':'ExecutoresHub'}});
+    if(!r.ok)throw new Error('API retornou '+r.status);
+    const data=await r.json();
+    const scripts=data.result?.scripts||data.scripts||[];
+    const total=data.result?.totalPages||data.totalPages||1;
+    if(!scripts.length){lbl.textContent='😔 Nenhum script encontrado.';return;}
+    lbl.textContent='';
+    scripts.forEach(s=>{
+      const card=document.createElement('div');card.className='sbx-card';
+      const thumb=s.game?.imageUrl||s.imageUrl||'';
+      const isFree=!s.key&&!s.paid;
+      const views=s.views?`👁 ${Number(s.views).toLocaleString('pt-BR')}`:'';
+      const verified=s.verified?'✅':'⚠️';
+      card.innerHTML=`
+        ${thumb?`<img class="sbx-thumb" src="${thumb}" alt="${s.game?.name||'Game'}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="sbx-thumb-ph" style="display:none">🎮</div>`:`<div class="sbx-thumb-ph">🎮</div>`}
+        <div class="sbx-body">
+          <div class="sbx-game">${(s.game?.name||'Universal').substring(0,22)}</div>
+          <div class="sbx-title">${(s.title||s.scriptName||'Script').substring(0,30)}</div>
+          <div class="sbx-meta">
+            <span class="${isFree?'sbx-badge-free':'sbx-badge-paid'}">${isFree?'GRÁTIS':'KEY'}</span>
+            <span class="sbx-verified" title="${s.verified?'Verificado':'Não verificado'}">${verified}</span>
+            <span class="sbx-views">${views}</span>
+          </div>
+        </div>`;
+      card.addEventListener('click',()=>openSBXModal(s));
+      grid.appendChild(card);
+    });
+    if(page>1)document.getElementById('sbxPrev').style.display='';
+    if(page<total)document.getElementById('sbxNext').style.display='';
+    sbxLoaded=true;
+  }catch(err){
+    lbl.innerHTML=`<div style="color:var(--tx2);line-height:1.8">
+      <div style="font-size:1.5rem;margin-bottom:8px">⚠️</div>
+      Não foi possível carregar do ScriptBlox (bloqueio CORS).<br/>
+      <a href="https://scriptblox.com" target="_blank" rel="noopener" style="color:var(--p);text-decoration:underline">Abrir no site direto →</a>
+    </div>`;
+  }
+}
+
+function openSBXModal(s){
+  const code=s.script||`-- Script de: ${s.title||'ScriptBlox'}\n-- Jogo: ${s.game?.name||'N/A'}\n-- Fonte: scriptblox.com/script/${s.slug||s._id||''}\n\nloadstring(game:HttpGet("${s.rawUrl||''}"))()`;
+  const name=s.title||s.scriptName||'Script ScriptBlox';
+  const icon='🌐';
+  const tag=s.game?.name||'ScriptBlox';
+  document.getElementById('mIco').textContent=icon;
+  document.getElementById('mNm').textContent=name.substring(0,40);
+  document.getElementById('mTg').textContent=tag;
+  const pr=document.getElementById('mPr');
+  const isFree=!s.key&&!s.paid;
+  pr.textContent=isFree?'✅ GRÁTIS':'🔑 PRECISA KEY';pr.className='m-pr '+(isFree?'free':'paid');
+  document.getElementById('cBox').textContent=code;
+  document.getElementById('mFavBtn').style.display='none';
+  modalBg.classList.add('on');document.body.style.overflow='hidden';resetCopy();
+}
+
+// Category buttons
+document.querySelectorAll('.sbx-cat').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.sbx-cat').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');sbxQuery=btn.dataset.q;sbxPage=1;fetchSBX(sbxQuery,sbxPage);
+  });
+});
+document.getElementById('sbxSearchBtn').addEventListener('click',()=>{sbxQuery=document.getElementById('sbxSearch').value.trim();sbxPage=1;fetchSBX(sbxQuery,sbxPage);});
+document.getElementById('sbxSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){sbxQuery=e.target.value.trim();sbxPage=1;fetchSBX(sbxQuery,sbxPage);}});
+document.getElementById('sbxPrev').addEventListener('click',()=>{if(sbxPage>1){sbxPage--;fetchSBX(sbxQuery,sbxPage);}});
+document.getElementById('sbxNext').addEventListener('click',()=>{sbxPage++;fetchSBX(sbxQuery,sbxPage);});
+document.getElementById('sbxRand').addEventListener('click',()=>{sbxPage=Math.floor(Math.random()*10)+1;fetchSBX(sbxQuery,sbxPage);toast('🎲 Página aleatória: '+sbxPage,'info',1500);});
 
 /* ══ HELPERS ══ */
 function showMsg(id,txt,type){

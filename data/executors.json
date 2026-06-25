@@ -67,19 +67,6 @@
     "active": true
   },
   {
-    "id": 6,
-    "name": "Electron",
-    "platform": "pc",
-    "info": "Windows • Grátis • Lv.7",
-    "tags": [
-      "Windows",
-      "Free"
-    ],
-    "link": "https://electron.gg/",
-    "paid": false,
-    "active": true
-  },
-  {
     "id": 8,
     "name": "Synapse X",
     "platform": "pc",

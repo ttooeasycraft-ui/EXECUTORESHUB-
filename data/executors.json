@@ -54,19 +54,6 @@
     "active": true
   },
   {
-    "id": 8,
-    "name": "Synapse X",
-    "platform": "pc",
-    "info": "Windows • Pago • Lv.8",
-    "tags": [
-      "Windows",
-      "Pago"
-    ],
-    "link": "https://x.synapse.to/",
-    "paid": true,
-    "active": true
-  },
-  {
     "id": 9,
     "name": "Script-Ware",
     "platform": "pc",

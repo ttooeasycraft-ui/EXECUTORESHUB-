@@ -54,20 +54,6 @@
     "active": true
   },
   {
-    "id": 9,
-    "name": "Script-Ware",
-    "platform": "pc",
-    "info": "Win/Mac • Pago • Lv.8",
-    "tags": [
-      "Win",
-      "Mac",
-      "Pago"
-    ],
-    "link": "https://scriptware.net/",
-    "paid": true,
-    "active": true
-  },
-  {
     "id": 1782415248486,
     "name": "Delta IOS",
     "platform": "mobile",

@@ -41,19 +41,6 @@
     "active": true
   },
   {
-    "id": 4,
-    "name": "KRNL",
-    "platform": "pc",
-    "info": "Windows • Grátis • Lv.7",
-    "tags": [
-      "Windows",
-      "Free"
-    ],
-    "link": "https://krnl.place/",
-    "paid": false,
-    "active": true
-  },
-  {
     "id": 5,
     "name": "Fluxus",
     "platform": "pc",

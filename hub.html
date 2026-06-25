@@ -407,21 +407,68 @@ input,textarea,select{font-family:'Space Grotesk',sans-serif;color:var(--tx)}
 .discord-link{display:flex;align-items:center;gap:8px;padding:8px 13px;margin:0 9px 6px;background:rgba(88,101,242,.12);border:1px solid rgba(88,101,242,.3);border-radius:var(--r2);font-size:.78rem;color:#8891f8;transition:all var(--sp);text-decoration:none;cursor:pointer;flex-shrink:0}
 .discord-link:hover{background:rgba(88,101,242,.2);border-color:rgba(88,101,242,.5)}
 
+/* ══ STAR RATING ══ */
+.star-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.star-row-label{font-family:'Press Start 2P',monospace;font-size:.36rem;color:var(--tx2);letter-spacing:.04em}
+.stars{display:flex;gap:2px;cursor:pointer}
+.stars .st{font-size:1.1rem;color:var(--tx3);transition:color .1s,transform .1s;line-height:1}
+.stars .st.on{color:#fbbf24;text-shadow:0 0 6px rgba(251,191,36,.6)}
+.stars .st:hover,.stars .st:hover~.st{transform:scale(1.2)}
+.stars-display{display:inline-flex;gap:1px;font-size:.7rem}
+.stars-display .st{color:var(--tx3)}
+.stars-display .st.on{color:#fbbf24}
+.rating-count{font-size:.66rem;color:var(--tx2)}
+/* on script cards */
+.sc-rating{display:flex;align-items:center;gap:3px;margin-top:3px}
+.sc-stars{font-size:.6rem;letter-spacing:-1px}
+.sc-stars .s{color:var(--tx3)}
+.sc-stars .s.on{color:#fbbf24}
+.sc-rc{font-size:.6rem;color:var(--tx2)}
+
+/* ══ LIVE COUNTER ══ */
+.live-count-bar{display:flex;align-items:center;gap:14px;padding:7px 22px;background:rgba(0,0,0,.3);border-bottom:1px solid var(--bd);flex-wrap:wrap}
+.lc-item{display:flex;align-items:center;gap:5px;font-family:'Press Start 2P',monospace;font-size:.38rem;color:var(--tx2)}
+.lc-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:lc-pulse 2s ease-in-out infinite;flex-shrink:0}
+@keyframes lc-pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
+.lc-num{color:var(--p);font-size:.48rem}
+.lc-sbx{color:#8891f8}
+.lc-sbx .lc-dot{background:#8891f8}
+
 /* ══ SCRIPTBLOX ══ */
 .sbx-cat{font-family:'Press Start 2P',monospace;font-size:.38rem;padding:5px 9px;border-radius:20px;border:1.5px solid var(--bd);background:var(--sf1);color:var(--tx2);cursor:pointer;transition:all var(--sp)}
 .sbx-cat:hover,.sbx-cat.on{border-color:var(--p);color:var(--p);background:var(--pd)}
+.sbx-sort{background:var(--sf1);border:1.5px solid var(--bd);border-radius:var(--r2);padding:5px 9px;font-size:.72rem;color:var(--tx);outline:none;cursor:pointer;transition:border-color var(--sp)}
+.sbx-sort:focus{border-color:var(--p)}
 .sbx-card{background:linear-gradient(145deg,var(--sf1),var(--bg2));border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:all var(--sp);position:relative}
-.sbx-card:hover{border-color:var(--bd2);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.4),0 0 12px var(--pd)}
+.sbx-card:hover{border-color:var(--bd2);transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.5),0 0 16px var(--pd)}
 .sbx-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg0);display:block}
-.sbx-thumb-ph{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--bg0),var(--sf2));display:flex;align-items:center;justify-content:center;font-size:2rem}
+.sbx-thumb-ph{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--bg0),var(--sf2));display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative}
+.sbx-thumb-ph span{position:absolute;bottom:6px;left:0;right:0;text-align:center;font-family:'Press Start 2P',monospace;font-size:.28rem;color:var(--tx2);padding:0 4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sbx-body{padding:9px 10px;display:flex;flex-direction:column;gap:4px}
-.sbx-game{font-family:'Press Start 2P',monospace;font-size:.38rem;color:var(--p);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sbx-title{font-size:.76rem;font-weight:700;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sbx-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.sbx-views{font-size:.66rem;color:var(--tx2)}
-.sbx-badge-free{font-family:'Press Start 2P',monospace;font-size:.3rem;padding:2px 5px;border-radius:3px;background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
-.sbx-badge-paid{font-family:'Press Start 2P',monospace;font-size:.3rem;padding:2px 5px;border-radius:3px;background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.sbx-game{font-family:'Press Start 2P',monospace;font-size:.36rem;color:var(--p);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbx-title{font-size:.76rem;font-weight:700;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.sbx-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:1px}
+.sbx-views{font-size:.64rem;color:var(--tx2)}
+.sbx-likes{font-size:.64rem;color:var(--tx2)}
+.sbx-user-row{display:flex;align-items:center;gap:5px;padding:6px 10px;border-top:1px solid var(--bd);background:var(--bg2)}
+.sbx-avatar{width:16px;height:16px;border-radius:50%;background:var(--pd);border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;font-size:.55rem;flex-shrink:0;overflow:hidden}
+.sbx-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.sbx-uname{font-size:.62rem;color:var(--tx2);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbx-date{font-size:.58rem;color:var(--tx3);flex-shrink:0}
+.sbx-badge-free{font-family:'Press Start 2P',monospace;font-size:.28rem;padding:2px 5px;border-radius:3px;background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
+.sbx-badge-paid{font-family:'Press Start 2P',monospace;font-size:.28rem;padding:2px 5px;border-radius:3px;background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.sbx-badge-key{font-family:'Press Start 2P',monospace;font-size:.28rem;padding:2px 5px;border-radius:3px;background:rgba(244,63,94,.1);color:#f43f5e;border:1px solid rgba(244,63,94,.3)}
 .sbx-verified{font-size:.7rem}
+/* SBX Modal */
+.sbx-modal-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:var(--r) var(--r) 0 0}
+.sbx-modal-img-ph{width:100%;aspect-ratio:4/1;background:linear-gradient(135deg,var(--bg0),var(--sf2));display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.sbx-modal-stats{display:flex;gap:10px;padding:8px 16px;background:var(--bg2);border-bottom:1px solid var(--bd);flex-wrap:wrap}
+.sbx-mstat{display:flex;align-items:center;gap:4px;font-size:.74rem;color:var(--tx2)}
+.sbx-mstat strong{color:var(--tx);font-size:.8rem}
+.sbx-source-link{display:flex;align-items:center;justify-content:center;gap:5px;color:var(--p);font-size:.72rem;text-decoration:underline;cursor:pointer;transition:opacity .15s}
+.sbx-source-link:hover{opacity:.75}
+/* page indicator */
+.sbx-page-indicator{font-family:'Press Start 2P',monospace;font-size:.38rem;color:var(--tx2);text-align:center;padding:4px 0}
 /* ══ RESPONSIVE ══ */
 @media(max-width:768px){
   .sb{transform:translateX(-100%)}.sb.open{transform:translateX(0)}
@@ -643,17 +690,24 @@ input,textarea,select{font-family:'Space Grotesk',sans-serif;color:var(--tx)}
   <div class="page" id="page-scriptblox">
     <div class="topbar"><span class="tb-icon">🌐</span><span class="tb-title">SCRIPTBLOX</span><span class="tb-pill">AO VIVO</span>
       <div class="tb-actions">
-        <input class="f-inp" id="sbxSearch" type="text" placeholder="Buscar..." style="max-width:180px;padding:6px 10px;font-size:.8rem"/>
+        <input class="f-inp" id="sbxSearch" type="text" placeholder="Buscar script..." style="max-width:160px;padding:6px 10px;font-size:.8rem"/>
         <button class="btn ghost sm" id="sbxSearchBtn">🔍</button>
         <button class="btn ghost sm" id="sbxRand">🎲 Random</button>
       </div>
     </div>
-    <div style="padding:22px;flex:1;display:flex;flex-direction:column;gap:14px">
-      <div style="padding:10px 14px;background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.2);border-radius:var(--r2);font-size:.78rem;color:var(--tx2);line-height:1.7">
-        ⚠️ Scripts do ScriptBlox são postados por terceiros e não foram verificados pelo EXECUTORES HUB. Use com responsabilidade.
+    <!-- live counter bar -->
+    <div class="live-count-bar">
+      <div class="lc-item"><div class="lc-dot"></div>SCRIPTS CARREGADOS: <span class="lc-num" id="sbxCountNum">0</span></div>
+      <div class="lc-item lc-sbx"><div class="lc-dot"></div>PÁGINA <span class="lc-num" id="sbxPageNum">1</span> / <span class="lc-num" id="sbxTotalPages">?</span></div>
+      <div class="lc-item" style="margin-left:auto"><span style="color:var(--tx2)">FONTE:</span>&nbsp;<a href="https://scriptblox.com" target="_blank" style="color:#8891f8;text-decoration:underline">scriptblox.com</a></div>
+    </div>
+    <div style="padding:16px 22px;flex:1;display:flex;flex-direction:column;gap:12px">
+      <div style="padding:8px 13px;background:rgba(244,63,94,.06);border:1px solid rgba(244,63,94,.18);border-radius:var(--r2);font-size:.76rem;color:var(--tx2);line-height:1.7">
+        ⚠️ Scripts postados por terceiros no ScriptBlox. Não verificados pelo EXECUTORES HUB — use com responsabilidade.
       </div>
+      <!-- filters + sort -->
       <div style="display:flex;gap:7px;flex-wrap:wrap;align-items:center">
-        <span style="font-family:'Press Start 2P',monospace;font-size:.42rem;color:var(--tx2)">FILTRAR:</span>
+        <span style="font-family:'Press Start 2P',monospace;font-size:.38rem;color:var(--tx2)">CAT:</span>
         <button class="sbx-cat on" data-q="">🌐 Todos</button>
         <button class="sbx-cat" data-q="blox fruit">🍎 Blox Fruit</button>
         <button class="sbx-cat" data-q="brookhaven">🏘️ Brookhaven</button>
@@ -661,11 +715,23 @@ input,textarea,select{font-family:'Space Grotesk',sans-serif;color:var(--tx)}
         <button class="sbx-cat" data-q="murder mystery">🔪 MM2</button>
         <button class="sbx-cat" data-q="arsenal">🔫 Arsenal</button>
         <button class="sbx-cat" data-q="pet sim">🐾 Pet Sim</button>
+        <button class="sbx-cat" data-q="jailbreak">🚔 Jailbreak</button>
+        <button class="sbx-cat" data-q="adopt me">🐣 Adopt Me</button>
+        <button class="sbx-cat" data-q="anime adventures">⚔️ Anime Adv</button>
+        <button class="sbx-cat" data-q="blade ball">🏐 Blade Ball</button>
+        <button class="sbx-cat" data-q="project mugetsu">🌙 Mugetsu</button>
+        <button class="sbx-cat" data-q="fisch">🐟 Fisch</button>
+        <select class="sbx-sort" id="sbxSort" style="margin-left:auto">
+          <option value="">📊 Mais Recentes</option>
+          <option value="views">👁 Mais Vistos</option>
+          <option value="likes">❤️ Mais Curtidos</option>
+        </select>
       </div>
-      <div class="sg" id="sbxGrid" style="grid-template-columns:repeat(auto-fill,minmax(155px,1fr))"></div>
+      <div class="sg" id="sbxGrid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr))"></div>
       <div id="sbxLoad" style="text-align:center;padding:30px;color:var(--tx2)"></div>
-      <div style="display:flex;justify-content:center;gap:9px">
+      <div style="display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap">
         <button class="btn ghost" id="sbxPrev" style="display:none">← Anterior</button>
+        <span class="sbx-page-indicator" id="sbxPageInd"></span>
         <button class="btn ghost" id="sbxNext" style="display:none">Próxima →</button>
       </div>
     </div>
@@ -936,6 +1002,50 @@ input,textarea,select{font-family:'Space Grotesk',sans-serif;color:var(--tx)}
         <button class="cbtn share" id="shareBtn">🔗 COMPARTILHAR</button>
       </div>
       <button class="m-fav-btn" id="mFavBtn">⭐ FAVORITAR SCRIPT</button>
+      <!-- STAR RATING -->
+      <div class="star-row" id="mRatingRow">
+        <span class="star-row-label">SUA NOTA:</span>
+        <div class="stars" id="mStars">
+          <span class="st" data-v="1">★</span>
+          <span class="st" data-v="2">★</span>
+          <span class="st" data-v="3">★</span>
+          <span class="st" data-v="4">★</span>
+          <span class="st" data-v="5">★</span>
+        </div>
+        <span class="rating-count" id="mRatingInfo"></span>
+      </div>
+      <ol class="m-steps"><li>Copie o código</li><li>Abra o executor</li><li>Cole e execute</li></ol>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTBLOX MODAL (with game image) -->
+<div class="modal-bg" id="sbxModalBg">
+  <div class="modal" style="max-width:580px">
+    <div id="sbxMImg"></div>
+    <div class="m-head">
+      <div class="mhl">
+        <div>
+          <div class="m-name" id="sbxMNm"></div>
+          <div class="m-meta"><span class="m-tag" id="sbxMGame"></span><span class="m-pr" id="sbxMPr"></span></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <a id="sbxMLink" href="#" target="_blank" rel="noopener" class="sbx-source-link" title="Ver no ScriptBlox">🔗</a>
+        <button class="m-close" id="sbxMClose">✕</button>
+      </div>
+    </div>
+    <div class="sbx-modal-stats" id="sbxMStats"></div>
+    <div class="m-body">
+      <div class="clabel">📋 COLE NO EXECUTOR</div>
+      <div class="cbox" id="sbxMCode"></div>
+      <div class="m-btns">
+        <button class="cbtn" id="sbxMCopy">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          COPIAR
+        </button>
+        <button class="cbtn share" id="sbxMShare">🔗 COMPARTILHAR</button>
+      </div>
       <ol class="m-steps"><li>Copie o código</li><li>Abra o executor</li><li>Cole e execute</li></ol>
     </div>
   </div>
@@ -1188,6 +1298,9 @@ function allScripts(){return SCRIPTS;}
 
 function mkCard(s){
   const isFav=favorites.includes(s.name);
+  const {avg,count}=getAvgRating(s.name);
+  const stars=avg>0?mkStarsMini(s.name):'';
+  const ratingEl=count>0?`<div class="sc-rating">${stars}<span class="sc-rc">${avg}/5</span></div>`:'';
   const d=document.createElement('div');
   d.className='sc'+(isFav?' faved':'');
   d.innerHTML=`
@@ -1196,6 +1309,7 @@ function mkCard(s){
     <span class="sc-n">${s.name}</span>
     <span class="sc-g">${s.tag}</span>
     <span class="sbadge ${s.price}">${s.price==='free'?'✅ GRÁTIS':'💎 PAGO'}</span>
+    ${ratingEl}
     ${s.isNew?'<span class="snew">🆕 NOVO</span>':''}
   `;
   d.querySelector('.sc-fav').addEventListener('click',ev=>{ev.stopPropagation();toggleFav(s,d);});
@@ -1347,6 +1461,9 @@ function openModal(s){
   const isFav=favorites.includes(s.name);
   mFavBtn.textContent=isFav?'★ FAVORITADO!':'⭐ FAVORITAR SCRIPT';
   mFavBtn.classList.toggle('on',isFav);
+  mFavBtn.style.display='';
+  document.getElementById('mRatingRow').style.display='';
+  renderModalRating(s.name);
   modalBg.classList.add('on');document.body.style.overflow='hidden';resetCopy();
 }
 function closeModal(){modalBg.classList.remove('on');document.body.style.overflow='';}
@@ -1853,75 +1970,190 @@ document.getElementById('editClose').addEventListener('click',closeEditModal);
 editModalBg.addEventListener('click',e=>{if(e.target===editModalBg)closeEditModal();});
 function closeEditModal(){editModalBg.classList.remove('on');document.body.style.overflow='';}
 
+/* ══ STAR RATINGS ══ */
+let scriptRatings=JSON.parse(localStorage.getItem('ehRatings')||'{}');
+function saveRatings(){localStorage.setItem('ehRatings',JSON.stringify(scriptRatings));}
+function getAvgRating(name){const r=scriptRatings[name];if(!r||!r.count)return{avg:0,count:0};return{avg:Math.round((r.total/r.count)*10)/10,count:r.count};}
+function rateScript(name,val){
+  if(!scriptRatings[name])scriptRatings[name]={total:0,count:0,my:0};
+  const old=scriptRatings[name].my||0;
+  if(old)scriptRatings[name].total-=old;
+  else scriptRatings[name].count++;
+  scriptRatings[name].total+=val;
+  scriptRatings[name].my=val;
+  saveRatings();
+  renderModalRating(name);
+  toast(`⭐ Nota ${val}/5 salva!`,'ok',1500);
+}
+function renderModalRating(name){
+  const stars=document.querySelectorAll('#mStars .st');
+  const my=scriptRatings[name]?.my||0;
+  stars.forEach(s=>{const v=parseInt(s.dataset.v);s.classList.toggle('on',v<=my);});
+  const {avg,count}=getAvgRating(name);
+  const inf=document.getElementById('mRatingInfo');
+  if(inf)inf.textContent=count?`★ ${avg}/5 (${count} voto${count!==1?'s':''})`:count===0?'Seja o primeiro a avaliar!':'';
+}
+function mkStarsMini(name,size='.62rem'){
+  const {avg}=getAvgRating(name);
+  const fl=Math.floor(avg);
+  return `<span class="sc-stars" style="font-size:${size}">`+[1,2,3,4,5].map(i=>`<span class="s${i<=fl?' on':''}">${i<=fl?'★':'☆'}</span>`).join('')+`</span>`;
+}
+// wire modal stars
+document.querySelectorAll('#mStars .st').forEach(s=>{
+  s.addEventListener('click',()=>{if(currentScript)rateScript(currentScript.name,parseInt(s.dataset.v));});
+  s.addEventListener('mouseenter',()=>{const v=parseInt(s.dataset.v);document.querySelectorAll('#mStars .st').forEach(x=>x.classList.toggle('on',parseInt(x.dataset.v)<=v));});
+});
+document.getElementById('mStars').addEventListener('mouseleave',()=>{if(currentScript)renderModalRating(currentScript.name);});
+
 /* ══ SCRIPTBLOX INTEGRATION ══ */
-let sbxPage=1, sbxQuery='', sbxLoaded=false;
+let sbxPage=1, sbxQuery='', sbxLoaded=false, sbxSort='', sbxTotalPgs=1;
+
+function fmtNum(n){if(!n)return'0';if(n>=1000000)return(n/1000000).toFixed(1)+'M';if(n>=1000)return(n/1000).toFixed(1)+'K';return String(n);}
+function fmtDate(d){if(!d)return'';const dt=new Date(d);const now=new Date();const diff=Math.floor((now-dt)/864e5);if(diff===0)return'hoje';if(diff===1)return'ontem';if(diff<30)return diff+'d atrás';if(diff<365)return Math.floor(diff/30)+'m atrás';return Math.floor(diff/365)+'a atrás';}
 
 async function fetchSBX(q,page){
   const lbl=document.getElementById('sbxLoad');
   const grid=document.getElementById('sbxGrid');
-  lbl.innerHTML='<span class="spin-ico" style="display:inline-block;animation:dspin 1.2s linear infinite">🌐</span> Carregando do ScriptBlox...';
+  const cnEl=document.getElementById('sbxCountNum');
+  const pgEl=document.getElementById('sbxPageNum');
+  const tpEl=document.getElementById('sbxTotalPages');
+  const piEl=document.getElementById('sbxPageInd');
+  lbl.innerHTML='<span style="display:inline-block;animation:dspin 1.2s linear infinite">🌐</span> Carregando do ScriptBlox...';
   grid.innerHTML='';
   document.getElementById('sbxPrev').style.display='none';
   document.getElementById('sbxNext').style.display='none';
+  if(piEl)piEl.textContent='';
   try{
     const url=q
-      ?`https://scriptblox.com/api/script/search?q=${encodeURIComponent(q)}&page=${page}&max=24`
-      :`https://scriptblox.com/api/script/fetch?page=${page}&max=24`;
-    const r=await fetch(url,{headers:{'User-Agent':'ExecutoresHub'}});
-    if(!r.ok)throw new Error('API retornou '+r.status);
+      ?`https://scriptblox.com/api/script/search?q=${encodeURIComponent(q)}&page=${page}&max=20`
+      :`https://scriptblox.com/api/script/fetch?page=${page}&max=20`;
+    const r=await fetch(url,{headers:{'Accept':'application/json'}});
+    if(!r.ok)throw new Error('HTTP '+r.status);
     const data=await r.json();
-    const scripts=data.result?.scripts||data.scripts||[];
-    const total=data.result?.totalPages||data.totalPages||1;
+    let scripts=data.result?.scripts||data.scripts||[];
+    sbxTotalPgs=data.result?.totalPages||data.totalPages||1;
+    // client-side sort
+    if(sbxSort==='views')scripts=[...scripts].sort((a,b)=>(b.views||0)-(a.views||0));
+    if(sbxSort==='likes')scripts=[...scripts].sort((a,b)=>(b.likes||0)-(a.likes||0));
     if(!scripts.length){lbl.textContent='😔 Nenhum script encontrado.';return;}
     lbl.textContent='';
+    if(cnEl)animCount(cnEl,0,scripts.length,600);
+    if(pgEl)pgEl.textContent=page;
+    if(tpEl)tpEl.textContent=sbxTotalPgs;
+    if(piEl)piEl.textContent=`Página ${page} de ${sbxTotalPgs}`;
+    sbxPage=page;
     scripts.forEach(s=>{
       const card=document.createElement('div');card.className='sbx-card';
       const thumb=s.game?.imageUrl||s.imageUrl||'';
-      const isFree=!s.key&&!s.paid;
-      const views=s.views?`👁 ${Number(s.views).toLocaleString('pt-BR')}`:'';
-      const verified=s.verified?'✅':'⚠️';
+      const gameName=s.game?.name||'Universal';
+      const isFree=!s.key&&!s.isPatched;
+      const hasKey=!!s.key;
+      const views=fmtNum(s.views);
+      const likes=fmtNum(s.likes);
+      const uname=s.owner?.username||s.user?.username||'';
+      const uava=s.owner?.image||s.user?.avatar||'';
+      const dateStr=fmtDate(s.createdAt||s.updatedAt||'');
+      const badgeCls=hasKey?'sbx-badge-key':isFree?'sbx-badge-free':'sbx-badge-paid';
+      const badgeTxt=hasKey?'🔑 KEY':isFree?'FREE':'PAGO';
       card.innerHTML=`
-        ${thumb?`<img class="sbx-thumb" src="${thumb}" alt="${s.game?.name||'Game'}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="sbx-thumb-ph" style="display:none">🎮</div>`:`<div class="sbx-thumb-ph">🎮</div>`}
+        ${thumb
+          ?`<img class="sbx-thumb" src="${thumb}" alt="${gameName}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <div class="sbx-thumb-ph" style="display:none">🎮<span>${gameName}</span></div>`
+          :`<div class="sbx-thumb-ph">🎮<span>${gameName}</span></div>`}
         <div class="sbx-body">
-          <div class="sbx-game">${(s.game?.name||'Universal').substring(0,22)}</div>
-          <div class="sbx-title">${(s.title||s.scriptName||'Script').substring(0,30)}</div>
+          <div class="sbx-game">${gameName.substring(0,24)}</div>
+          <div class="sbx-title" title="${s.title||'Script'}">${(s.title||'Script').substring(0,32)}</div>
           <div class="sbx-meta">
-            <span class="${isFree?'sbx-badge-free':'sbx-badge-paid'}">${isFree?'GRÁTIS':'KEY'}</span>
-            <span class="sbx-verified" title="${s.verified?'Verificado':'Não verificado'}">${verified}</span>
-            <span class="sbx-views">${views}</span>
+            <span class="${badgeCls}">${badgeTxt}</span>
+            ${s.verified?'<span class="sbx-verified" title="Verificado">✅</span>':''}
+            ${views?`<span class="sbx-views">👁 ${views}</span>`:''}
+            ${likes?`<span class="sbx-likes">❤️ ${likes}</span>`:''}
           </div>
+        </div>
+        <div class="sbx-user-row">
+          <div class="sbx-avatar">${uava?`<img src="${uava}" loading="lazy" onerror="this.style.display='none'"/>`:'👤'}</div>
+          <span class="sbx-uname">${uname||'Anônimo'}</span>
+          <span class="sbx-date">${dateStr}</span>
         </div>`;
       card.addEventListener('click',()=>openSBXModal(s));
       grid.appendChild(card);
     });
     if(page>1)document.getElementById('sbxPrev').style.display='';
-    if(page<total)document.getElementById('sbxNext').style.display='';
+    if(page<sbxTotalPgs)document.getElementById('sbxNext').style.display='';
     sbxLoaded=true;
   }catch(err){
-    lbl.innerHTML=`<div style="color:var(--tx2);line-height:1.8">
-      <div style="font-size:1.5rem;margin-bottom:8px">⚠️</div>
-      Não foi possível carregar do ScriptBlox (bloqueio CORS).<br/>
-      <a href="https://scriptblox.com" target="_blank" rel="noopener" style="color:var(--p);text-decoration:underline">Abrir no site direto →</a>
+    lbl.innerHTML=`<div style="color:var(--tx2);line-height:2;text-align:center;padding:20px">
+      <div style="font-size:2rem;margin-bottom:10px">⚠️</div>
+      <div style="font-size:.78rem;margin-bottom:10px">Não foi possível carregar (CORS bloqueado).</div>
+      <a href="https://scriptblox.com" target="_blank" rel="noopener" class="btn ghost">Abrir ScriptBlox direto →</a>
     </div>`;
+    console.warn('ScriptBlox fetch error:',err);
   }
 }
 
-function openSBXModal(s){
-  const code=s.script||`-- Script de: ${s.title||'ScriptBlox'}\n-- Jogo: ${s.game?.name||'N/A'}\n-- Fonte: scriptblox.com/script/${s.slug||s._id||''}\n\nloadstring(game:HttpGet("${s.rawUrl||''}"))()`;
-  const name=s.title||s.scriptName||'Script ScriptBlox';
-  const icon='🌐';
-  const tag=s.game?.name||'ScriptBlox';
-  document.getElementById('mIco').textContent=icon;
-  document.getElementById('mNm').textContent=name.substring(0,40);
-  document.getElementById('mTg').textContent=tag;
-  const pr=document.getElementById('mPr');
-  const isFree=!s.key&&!s.paid;
-  pr.textContent=isFree?'✅ GRÁTIS':'🔑 PRECISA KEY';pr.className='m-pr '+(isFree?'free':'paid');
-  document.getElementById('cBox').textContent=code;
-  document.getElementById('mFavBtn').style.display='none';
-  modalBg.classList.add('on');document.body.style.overflow='hidden';resetCopy();
+function animCount(el,from,to,dur){
+  const start=performance.now();
+  function step(now){const p=Math.min((now-start)/dur,1);el.textContent=Math.round(from+(to-from)*p);if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
 }
+
+function openSBXModal(s){
+  const code=s.script||`-- Script: ${s.title||'ScriptBlox'}\n-- Jogo: ${s.game?.name||'N/A'}\n-- Fonte: scriptblox.com/script/${s.slug||s._id||''}\n\nloadstring(game:HttpGet("${s.rawUrl||''}"))()`;
+  const name=s.title||s.scriptName||'Script ScriptBlox';
+  const gameName=s.game?.name||'ScriptBlox';
+  const thumb=s.game?.imageUrl||s.imageUrl||'';
+  const slug=s.slug||s._id||'';
+  const isFree=!s.key&&!s.isPatched;
+  const hasKey=!!s.key;
+  // game image at top
+  const imgEl=document.getElementById('sbxMImg');
+  imgEl.innerHTML=thumb
+    ?`<img class="sbx-modal-img" src="${thumb}" alt="${gameName}" onerror="this.outerHTML='<div class=sbx-modal-img-ph>🎮</div>'"/>`
+    :`<div class="sbx-modal-img-ph">🎮</div>`;
+  document.getElementById('sbxMNm').textContent=name.substring(0,45);
+  document.getElementById('sbxMGame').textContent=gameName;
+  const pr=document.getElementById('sbxMPr');
+  pr.textContent=hasKey?'🔑 PRECISA KEY':isFree?'✅ GRÁTIS':'💎 PAGO';
+  pr.className='m-pr '+(hasKey?'paid':isFree?'free':'paid');
+  // stats bar
+  const views=s.views?`<span class="sbx-mstat">👁 <strong>${fmtNum(s.views)}</strong> views</span>`:'';
+  const likes=s.likes?`<span class="sbx-mstat">❤️ <strong>${fmtNum(s.likes)}</strong> curtidas</span>`:'';
+  const owner=s.owner?.username||s.user?.username||'';
+  const ownerPart=owner?`<span class="sbx-mstat">👤 <strong>${owner}</strong></span>`:'';
+  const datePart=s.createdAt?`<span class="sbx-mstat">📅 <strong>${fmtDate(s.createdAt)}</strong></span>`:'';
+  const verifPart=s.verified?`<span class="sbx-mstat">✅ <strong>Verificado</strong></span>`:'';
+  document.getElementById('sbxMStats').innerHTML=views+likes+ownerPart+datePart+verifPart||'';
+  document.getElementById('sbxMCode').textContent=code;
+  const link=document.getElementById('sbxMLink');
+  if(slug){link.href=`https://scriptblox.com/script/${slug}`;link.style.display='';}
+  else link.style.display='none';
+  // reset copy btn
+  const cb=document.getElementById('sbxMCopy');
+  cb.classList.remove('ok');cb.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>COPIAR';
+  document.getElementById('sbxModalBg').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+
+// SBX modal close + copy + share
+document.getElementById('sbxMClose').addEventListener('click',()=>{document.getElementById('sbxModalBg').classList.remove('on');document.body.style.overflow='';});
+document.getElementById('sbxModalBg').addEventListener('click',e=>{if(e.target===document.getElementById('sbxModalBg')){document.getElementById('sbxModalBg').classList.remove('on');document.body.style.overflow='';}});
+document.getElementById('sbxMCopy').addEventListener('click',()=>{
+  const txt=document.getElementById('sbxMCode').textContent;
+  const done=()=>{
+    const b=document.getElementById('sbxMCopy');b.classList.add('ok');
+    b.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>COPIADO!';
+    setTimeout(()=>{b.classList.remove('ok');b.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>COPIAR';},2500);
+    copyCount++;localStorage.setItem('ehCopies',copyCount);
+    toast('✅ Código copiado!','ok',2000);
+  };
+  if(navigator.clipboard)navigator.clipboard.writeText(txt).then(done).catch(()=>fbCopy(txt,done));
+  else fbCopy(txt,done);
+});
+document.getElementById('sbxMShare').addEventListener('click',()=>{
+  const link=document.getElementById('sbxMLink').href;
+  if(link&&link!=='#'&&navigator.clipboard)navigator.clipboard.writeText(link).then(()=>toast('🔗 Link copiado!','info',2000));
+  else toast('⚠️ Link não disponível','warn',2000);
+});
 
 // Category buttons
 document.querySelectorAll('.sbx-cat').forEach(btn=>{
@@ -1932,6 +2164,7 @@ document.querySelectorAll('.sbx-cat').forEach(btn=>{
 });
 document.getElementById('sbxSearchBtn').addEventListener('click',()=>{sbxQuery=document.getElementById('sbxSearch').value.trim();sbxPage=1;fetchSBX(sbxQuery,sbxPage);});
 document.getElementById('sbxSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){sbxQuery=e.target.value.trim();sbxPage=1;fetchSBX(sbxQuery,sbxPage);}});
+document.getElementById('sbxSort').addEventListener('change',e=>{sbxSort=e.target.value;fetchSBX(sbxQuery,sbxPage);});
 document.getElementById('sbxPrev').addEventListener('click',()=>{if(sbxPage>1){sbxPage--;fetchSBX(sbxQuery,sbxPage);}});
 document.getElementById('sbxNext').addEventListener('click',()=>{sbxPage++;fetchSBX(sbxQuery,sbxPage);});
 document.getElementById('sbxRand').addEventListener('click',()=>{sbxPage=Math.floor(Math.random()*10)+1;fetchSBX(sbxQuery,sbxPage);toast('🎲 Página aleatória: '+sbxPage,'info',1500);});

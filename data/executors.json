@@ -22,7 +22,7 @@
       "Android",
       "Free"
     ],
-    "link": "https://www.mediafire.com/file/u3qtfz5sfmatniu/Roblox.Arceus.X.NEO.2.2.3.apk/file?hash=zPyjVPukN2Xv4Xvwi7WmZjg2CC7Nq5ezOBWjhTTaHVDwnhd29yflqnLtB0qGtSxi",
+    "link": "https://www.arceusxpro.com/",
     "paid": false,
     "active": true
   },
@@ -76,20 +76,6 @@
       "Free"
     ],
     "link": "https://electron.gg/",
-    "paid": false,
-    "active": true
-  },
-  {
-    "id": 7,
-    "name": "JJSploit",
-    "platform": "pc",
-    "info": "Windows • Grátis • Lv.5",
-    "tags": [
-      "Windows",
-      "Free",
-      "Iniciante"
-    ],
-    "link": "https://jjsploit.net/",
     "paid": false,
     "active": true
   },

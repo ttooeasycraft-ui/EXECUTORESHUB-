@@ -1,8 +1,8 @@
 /* ================================
-   COUNTDOWN.JS — July 20, 2026
+   COUNTDOWN.JS — August 1, 2026
    ================================ */
 (function () {
-  const TARGET = new Date('2026-07-20T00:00:00');
+  const TARGET = new Date('2026-08-01T00:00:00');
   const els = {
     days:  document.getElementById('cd-days'),
     hours: document.getElementById('cd-hours'),

@@ -7,21 +7,21 @@
 /* ---- Accent presets ---- */
 :root,
 [data-accent="green"] {
-  --p: #00e676;
-  --pg: rgba(0,230,118,.55);
-  --pd: rgba(0,230,118,.1);
-  --pm: rgba(0,230,118,.22);
-  --bg0: #040a06;
-  --bg1: #080f09;
-  --bg2: #0d1610;
-  --bg3: #121e15;
-  --sf1: #152019;
-  --sf2: #1c2b20;
-  --bd: rgba(0,230,118,.15);
-  --bd2: rgba(0,230,118,.28);
-  --tx: #e4f0e8;
-  --tx2: #7a9e84;
-  --tx3: #3a5a40;
+  --p: #ff2d55;
+  --pg: rgba(255,45,85,.55);
+  --pd: rgba(255,45,85,.1);
+  --pm: rgba(255,45,85,.22);
+  --bg0: #0b0204;
+  --bg1: #120307;
+  --bg2: #1c040b;
+  --bg3: #25060e;
+  --sf1: #300812;
+  --sf2: #400b18;
+  --bd: rgba(255,45,85,.15);
+  --bd2: rgba(255,45,85,.28);
+  --tx: #f8e4e8;
+  --tx2: #a06070;
+  --tx3: #602030;
   --font-px: 'Press Start 2P', monospace;
   --font-sg: 'Space Grotesk', sans-serif;
   --r: 10px;
